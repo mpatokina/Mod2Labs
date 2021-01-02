@@ -1,65 +1,58 @@
-
 class Tardis extends React.Component {
-    constructor(props){
-        super(props);
-        
-        this.state = {
-            tardis: {
-            name: 'Time and Relative Dimension in Space',
-            caps: false,
-            }
-          }
+  constructor(props) {
+    super(props);
+    this.state = {
+      isCased: false,
+      string: 'Time and Relative Dimension in Space'
     }
-    changeIt = (text) => {
-        if (this.state.tardis.caps) {
-            this.setState({
-                tardis: {
-                    name: text.toLowerCase(),   
-                    caps: false
-                }
-            })
-        } else {
-            this.setState({
-                tardis: {
-                    name: text.toUpperCase(),
-                    caps: true
-                }
-            })
-        }
+    this.changeFormat = this.changeFormat.bind(this);
+  }
+  changeFormat() {
+    if(!this.state.isCased) {
+      this.setState({ string: this.state.string.toUpperCase(), isCased: !this.state.isCased })
+    } else {
+      this.setState({ string: this.state.string.toLowerCase(), isCased: !this.state.isCased })
     }
-    render() {
-        return(
+  }
+  render() {
+    return (
+      <div>
+        <div>
+          <div onClick={ this.changeFormat } className="tardis-component">
             <div>
-             <div>
-                 <div>
-                    <div>
-                        <h3 onClick={() => this.changeIt(this.state.tardis.name)}>{this.state.tardis.name}</h3>
-                    </div>
-                 <DivOne tardis1={ this.state.tardis } changeItOne={ this.changeIt }/>
-                </div>
+              <h1>{ this.state.string }</h1>
             </div>
-            </div>
-        )
-    }
+            <Tardis1 />
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
-class DivOne extends React.Component {
+
+class Tardis1 extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isCased1: false,
+            string1: 'Time and Relative Dimension in Space'
+        }
+        this.changeFormat = this.changeFormat.bind(this);
+    }
+    changeFormat() {
+        if(!this.state.isCased1) {
+          this.setState({ string1: this.state.string1.toUpperCase(), isCased1: !this.state.isCased1 })
+        } else {
+          this.setState({ string1: this.state.string1.toLowerCase(), isCased1: !this.state.isCased1 })
+        }
+      }
+      render() {
+        return (
+          <div onClick={ this.changeFormat } className="tardis-component1">
+            <h1>{ this.state.string1 }</h1>
+          </div>
+        )
+      }
     }
     
-    render() {
-        return( 
-        
-        <div>
-         <h3 onClick= { () => this.props.changeItOne (this.props.tardis1.name)}>{this.props.tardis1.name}</h3>
-         
-        </div>
-        
-        )
-        }   
-    }
-
-
-
-
 ReactDOM.render(<Tardis />, document.getElementById('container'));
