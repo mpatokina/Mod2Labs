@@ -31,15 +31,17 @@ class Tardis extends React.Component {
         return(
             <div>
              <div>
-                <h3 onClick={() => this.changeIt(this.state.tardis.name)}>{this.state.tardis.name}</h3>
-                <DivOne tardis1={ this.state.tardis } changeItOne={ this.changeIt }/>
-
+                 <div>
+                    <div>
+                        <h3 onClick={() => this.changeIt(this.state.tardis.name)}>{this.state.tardis.name}</h3>
+                    </div>
+                 <DivOne tardis1={ this.state.tardis } changeItOne={ this.changeIt }/>
+                </div>
             </div>
             </div>
         )
     }
 }
-
 class DivOne extends React.Component {
     constructor(props) {
         super(props);
@@ -47,12 +49,16 @@ class DivOne extends React.Component {
     
     render() {
         return( 
+        
         <div>
          <h3 onClick= { () => this.props.changeItOne (this.props.tardis1.name)}>{this.props.tardis1.name}</h3>
+         
         </div>
+        
         )
         }   
     }
+
 
 
 
